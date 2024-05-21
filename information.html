@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息详情</title>
+    <style>
+        thead,tbody{
+            margin-bottom: 200px;
+        }
+        th,td{
+          width: 100px;
+          height: 50px;
+          text-align: left;
+        }
+    </style>
+</head>
+<body>
+  <h1 style="color: aqua;">信息管理</h1>
+  <form action="">
+    <label for="name">姓名：</label>
+    <input type="text" id="name" placeholder="请输入姓名" required>
+    <label for="age">年龄：</label>
+    <input type="text"  placeholder="请输入年龄">
+    <button type="button" onclick="addInfo()">添加信息</button>
+  </form>
+  <table id="infoTable" border="1">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+  </table>
+  <script>
+    function addInfo(){
+      var name = document.getElementById("name").value;
+      var age = document.getElementById("age").value;
+
+      var table = document.getElementById("infoTable");
+      var row = table.insertRow();
+
+      var nameCell = row.insertCell();
+      nameCell.innerHTML = name;
+
+      var ageCell = row.insertCell();
+      ageCell.innerHTML = age;
+
+      var actionCell = row.insertCell();
+      actionCell.innerHTML = '<button onclick="editInfo(this)">编辑</button> <button onclick="deleteInfo(this)">删除</button>';
+
+      
+    }
+  </script>
+    
+</body>
+</html>
