@@ -81,6 +81,12 @@
         <label for="age">年龄：</label>
         <input type="number" id="age" placeholder="请输入年龄" required>
 
+        <label for="major">专业：</label>
+        <input type="number" id="major" placeholder="请输入专业" required>
+
+        <label for="score">成绩：</label>
+        <input type="number" id="score" placeholder="请输入成绩" required>
+
         <button type="button" onclick="addInfo()">添加信息</button>
     </form>
 
@@ -93,6 +99,8 @@
             <tr>
                 <th>姓名</th>
                 <th>年龄</th>
+                <th>专业</th>
+                <th>成绩</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -104,6 +112,9 @@
         function addInfo() {
             var name = document.getElementById("name").value;
             var age = document.getElementById("age").value;
+            var major = document.getElementById("major").value;
+            var score = document.getElementById("score").value;
+
 
             var table = document.getElementById("infoTable");
             var row = table.insertRow();
@@ -116,11 +127,21 @@
             ageCell.innerHTML = age;
             row.setAttribute("data-age", age);
 
+            var majorCell = row.insertCell();
+            majorCell.innerHTML = major;
+            row.setAttribute("data-major",major);
+
+            var scoreCell = row.insertCell();
+            scoreCell.innerHTML = score;
+            row.setAttribute("data-score",score);
+
             var actionCell = row.insertCell();
             actionCell.innerHTML = '<button onclick="editInfo(this)">编辑</button> <button onclick="deleteInfo(this)">删除</button>';
 
             document.getElementById("name").value = "";
             document.getElementById("age").value = "";
+            document.getElementById("major").value = "";
+            document.getElementById("score").value = "";
         }
 
         function editInfo(button) {
@@ -128,12 +149,18 @@
 
             var nameCell = row.cells[0];
             var ageCell = row.cells[1];
+            var majorCell = row.cells[2];
+            var scoreCell = row.cells[3];
 
             var name = prompt("请输入新的姓名", nameCell.innerHTML);
             var age = prompt("请输入新的年龄", ageCell.innerHTML);
+            var major = prompt("请输入新的专业", ageCell.innerHTML);
+            var score = prompt("请输入新的成绩", ageCell.innerHTML);
 
             nameCell.innerHTML = name;
             ageCell.innerHTML = age;
+            majorCell.innerHTML = major;
+            scoreCell.innerHTML = score;
         }
 
         function deleteInfo(button) {
@@ -150,8 +177,10 @@
             for (var i = 1; i < rows.length; i++) {
                 var name = rows[i].getAttribute("data-name").toLowerCase();
                 var age = rows[i].getAttribute("data-age").toLowerCase();
+                var major = rows[i].getAttribute("data-major").toLowerCase();
+                var score = rows[i].getAttribute("data-score").toLowerCase();
 
-                if (name.includes(query) || age.includes(query)) {
+                if (name.includes(query) || age.includes(query) || major.includes(query) || score.includes(query)) {
                     rows[i].style.display = "";
                 } else {
                     rows[i].style.display = "none";
