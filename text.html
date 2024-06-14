@@ -3,190 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title style="color: aliceblue;background-color: coral;">信息管理</title>
+    <title>信息管理</title>
+    <link rel="stylesheet" href="static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
     <style>
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            height: 50px;
-            width: 500px;
-            text-align: left;
-        }
-        
-        body{
+        body {
             background-image: url("sunrise.jpg");
-    background-size: cover;
-    background-repeat: repeat;
+            background-size: cover;
+            background-repeat: repeat;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: none;
+        }
+
+        .navbar-brand, .nav > li > a {
+            color: #fff !important;
+        }
+
+        .navbar-brand:hover, .nav > li > a:hover {
+            color: #f0ad4e !important;
+        }
+
+        .container {
+            background-color: rgba(133,133,133,89);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgb(255, 255, 255);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            margin-right: 10px;
+        }
+
+        form input {
+            margin-right: 10px;
+            padding: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        form button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #4cae4c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .btn-edit, .btn-delete {
+            background-color: #f0ad4e;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn-delete {
+            background-color: #d9534f;
+        }
+
+        .btn-edit:hover {
+            background-color: #ec971f;
+        }
+
+        .btn-delete:hover {
+            background-color: #c9302c;
+        }
+
+        .form-inline .form-group {
+            margin-right: 10px;
         }
     </style>
-    <link rel="stylesheet" href="static/bootstrap-3.4.1-dist/css/bootstrap.min.css">
 </head>
 <body>
-    
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">管理系统</a>
-          </div>
-      
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <a class="navbar-brand" href="#">Yoofee学生信息管理系统</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="views.html">仪表盘 <span class="sr-only">(current)</span></a></li>
-              <li><a href="text.html">信息查询</a></li>
-              <li class="dropdown">
-                
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
+                <li class="active"><a href="views.html">仪表盘 <span class="sr-only">(current)</span></a></li>
+                <li><a href="text.html">信息查询</a></li>
+                <li class="dropdown">
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
             </ul>
-            
+
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a href="login.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
+                <li class="dropdown">
+                    <a href="login.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
             </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-    <li><a href="views.html">回到首页</a></li>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 
-    <!-- id="infoForm" -->
-    <form  class="table table-hover">
-        <label for="name">姓名：</label>
-        <input type="text" id="name" placeholder="请输入姓名" required>
-
-        <label for="age">年龄：</label>
-        <input type="number" id="age" placeholder="请输入年龄" required>
-
-        <label for="major">专业：</label>
-        <input type="number" id="major" placeholder="请输入专业" required>
-
-        <label for="score">成绩：</label>
-        <input type="number" id="score" placeholder="请输入成绩" required>
-
-        <button type="button" onclick="addInfo()">添加信息</button>
+<div class="container">
+    <h1>员工信息管理</h1>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="name">姓名：</label>
+            <input type="text" class="form-control" id="name" placeholder="请输入姓名" required>
+        </div>
+        <div class="form-group">
+            <label for="age">年龄：</label>
+            <input type="number" class="form-control" id="age" placeholder="请输入年龄" required>
+        </div>
+        <div class="form-group">
+            <label for="major">专业：</label>
+            <input type="text" class="form-control" id="major" placeholder="请输入专业" required>
+        </div>
+        <div class="form-group">
+            <label for="score">成绩：</label>
+            <input type="number" class="form-control" id="score" placeholder="请输入成绩" required>
+        </div>
+        <button type="button" class="btn btn-success" onclick="addInfo()">添加信息</button>
     </form>
 
-    <label for="query">查询条件：</label>
-    <input type="text" id="query" placeholder="请输入查询条件">
-    <button type="button" onclick="searchInfo()">查询</button>
+    <div class="form-inline">
+        <label for="query">查询条件：</label>
+        <input type="text" class="form-control" id="query" placeholder="请输入查询条件">
+        <button type="button" class="btn btn-primary" onclick="searchInfo()">查询</button>
+    </div>
 
     <table id="infoTable" class="table table-hover">
         <thead>
-            <tr>
-                <th>姓名</th>
-                <th>年龄</th>
-                <th>专业</th>
-                <th>成绩</th>
-                <th>操作</th>
-            </tr>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>专业</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
+</div>
 
-    <script>
-        function addInfo() {
-            const name = document.getElementById("name").value;
-            const age = document.getElementById("age").value;
-            const major = document.getElementById("major").value;
-            const score = document.getElementById("score").value;
+<script>
+    function addInfo() {
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const major = document.getElementById("major").value;
+        const score = document.getElementById("score").value;
 
+        const table = document.getElementById("infoTable");
+        const row = table.insertRow();
 
-            const table = document.getElementById("infoTable");
-            const row = table.insertRow();
+        const nameCell = row.insertCell();
+        nameCell.innerHTML = name;
+        row.setAttribute("data-name", name);
 
-            const nameCell = row.insertCell();
-            nameCell.innerHTML = name;
-            row.setAttribute("data-name", name);
+        const ageCell = row.insertCell();
+        ageCell.innerHTML = age;
+        row.setAttribute("data-age", age);
 
-            const ageCell = row.insertCell();
-            ageCell.innerHTML = age;
-            row.setAttribute("data-age", age);
+        const majorCell = row.insertCell();
+        majorCell.innerHTML = major;
+        row.setAttribute("data-major", major);
 
-            const majorCell = row.insertCell();
-            majorCell.innerHTML = major;
-            row.setAttribute("data-major",major);
+        const scoreCell = row.insertCell();
+        scoreCell.innerHTML = score;
+        row.setAttribute("data-score", score);
 
-            const scoreCell = row.insertCell();
-            scoreCell.innerHTML = score;
-            row.setAttribute("data-score",score);
+        const actionCell = row.insertCell();
+        actionCell.innerHTML = '<button class="btn btn-edit" onclick="editInfo(this)">编辑</button> <button class="btn btn-delete" onclick="deleteInfo(this)">删除</button>';
 
-            const actionCell = row.insertCell();
-            actionCell.innerHTML = '<button onclick="editInfo(this)">编辑</button> <button onclick="deleteInfo(this)">删除</button>';
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("major").value = "";
+        document.getElementById("score").value = "";
+    }
 
-            document.getElementById("name").value = "";
-            document.getElementById("age").value = "";
-            document.getElementById("major").value = "";
-            document.getElementById("score").value = "";
-        }
+    function editInfo(button) {
+        const row = button.parentNode.parentNode;
 
-        function editInfo(button) {
-            const row = button.parentNode.parentNode;
+        const nameCell = row.cells[0];
+        const ageCell = row.cells[1];
+        const majorCell = row.cells[2];
+        const scoreCell = row.cells[3];
 
-            const nameCell = row.cells[0];
-            const ageCell = row.cells[1];
-            const majorCell = row.cells[2];
-            const scoreCell = row.cells[3];
+        const name = prompt("请输入新的姓名", nameCell.innerHTML);
+        const age = prompt("请输入新的年龄", ageCell.innerHTML);
+        const major = prompt("请输入新的专业", majorCell.innerHTML);
+        const score = prompt("请输入新的成绩", scoreCell.innerHTML);
 
-            const name = prompt("请输入新的姓名", nameCell.innerHTML);
-            const age = prompt("请输入新的年龄", ageCell.innerHTML);
-            const major = prompt("请输入新的专业", ageCell.innerHTML);
-            const score = prompt("请输入新的成绩", ageCell.innerHTML);
+        nameCell.innerHTML = name;
+        ageCell.innerHTML = age;
+        majorCell.innerHTML = major;
+        scoreCell.innerHTML = score;
+    }
 
-            nameCell.innerHTML = name;
-            ageCell.innerHTML = age;
-            majorCell.innerHTML = major;
-            scoreCell.innerHTML = score;
-        }
+    function deleteInfo(button) {
+        const row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
 
-        function deleteInfo(button) {
-            const row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-        }
+    function searchInfo() {
+        const query = document.getElementById("query").value.toLowerCase();
 
-        function searchInfo() {
-            const query = document.getElementById("query").value.toLowerCase();
+        const table = document.getElementById("infoTable");
+        const rows = table.getElementsByTagName("tr");
 
-            const table = document.getElementById("infoTable");
-            const rows = table.getElementsByTagName("tr");
+        for (let i = 1; i < rows.length; i++) {
+            const name = rows[i].getAttribute("data-name").toLowerCase();
+            const age = rows[i].getAttribute("data-age").toLowerCase();
+            const major = rows[i].getAttribute("data-major").toLowerCase();
+            const score = rows[i].getAttribute("data-score").toLowerCase();
 
-            for (let i = 1; i < rows.length; i++) {
-                const name = rows[i].getAttribute("data-name").toLowerCase();
-                const age = rows[i].getAttribute("data-age").toLowerCase();
-                const major = rows[i].getAttribute("data-major").toLowerCase();
-                const score = rows[i].getAttribute("data-score").toLowerCase();
-
-                if (name.includes(query) || age.includes(query) || major.includes(query) || score.includes(query)) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
-                }
+            if (name.includes(query) || age.includes(query) || major.includes(query) || score.includes(query)) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
             }
         }
-    </script>
+    }
+</script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
